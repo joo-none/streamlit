@@ -153,6 +153,7 @@ def 종목별_긍정점수(item_code, last_page):
 
 
 item_code = st.text_input('분석을 원하시는 종목의 코드를 입력하세요')
+last_page = 1
 # last_page = st.number_input('스크래핑할 페이지 수를 입력하세요. (페이지 수가 많을수록 정확도는 향상되지만 오랜 시간이 소요됩니다)', min_value=0, step=1, format='%d')
 
 score = round(float(종목별_긍정점수(item_code, last_page)), 3)
