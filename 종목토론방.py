@@ -81,7 +81,7 @@ def 목록_내용링크(item_code, last_page):
 
 item_code = '015760'
 last_page = 1
-st.dataframe(context_link(item_code, last_page))
+st.dataframe(목록_내용링크(item_code, last_page))
 
 
 
