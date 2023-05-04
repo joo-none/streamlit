@@ -8,7 +8,9 @@ import re
 
 import FinanceDataReader as fdr
 
-st.title('실시간 네이버 종목토론실 투자 심리 분석')
+st.balloons()
+st.title('실시간 네이버 종목토론실 투자 심리 분석🚀💰')
+
 
 # 한페이지를 수집하는 함수
 def get_one_page(item_code, page_no):
@@ -156,12 +158,12 @@ if score >= 0.67:
 elif score < 0.33:
     score_color = "blue"
 else:
-    score_color = "black"
+    score_color = "white"
 
 
 
-st.write(f'입력하신 종목의 코드는 <code style="color:black; background-color:yellow">{item_code}</code>입니다.', unsafe_allow_html=True)
-st.write(f'<code style="color: black; background-color: yellow">{last_page}</code>개의 페이지를 출력합니다.', unsafe_allow_html=True)
+st.write(f'입력하신 종목의 코드는 **{item_code}**입니다.')
+st.write(f'**{last_page}**개의 페이지를 출력합니다.')
 st.write(f"네이버 종목 토론방에서 해당 종목의 실시간 긍정 점수는 <span style='color:{score_color};'>{score}</span>입니다.", unsafe_allow_html=True)
 st.write('저희 서비스를 이용해주셔서 감사합니다.')
 st.write('*투자의 책임은 항상 본인에게 있습니다.*')
