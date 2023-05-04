@@ -79,7 +79,7 @@ def context_link(item_code, last_page):
 #     df['내용'] = 종목토론_내용(item_code, last_page)
 #     return df
 
-item_code = '086520'
+item_code = '015760'
 last_page = 1
 st.dataframe(context_link(item_code, last_page))
 
