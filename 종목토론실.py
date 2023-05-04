@@ -15,6 +15,17 @@ st.set_page_config(
     page_icon="💰",
 )
 
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #000000;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 st.title('💰실시간 네이버 종목토론실 투자 심리 분석🚀')
 
 
