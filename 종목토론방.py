@@ -156,7 +156,6 @@ def 종목별_긍정점수(item_code, last_page):
 
 item_code = st.text_input('원하시는 종목의 코드를 입력하세요: ')
 last_page = st.text_input('스크래핑할 페이지 수를 입력하세요: ')
-last_page = int(last_page)
 
 st.write(f'입력하신 종목의 코드는 {item_code}입니다.')
 st.write(f'{last_page}개의 페이지를 출력합니다.')
