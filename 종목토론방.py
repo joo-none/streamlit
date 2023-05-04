@@ -154,8 +154,9 @@ def 종목별_긍정점수(item_code, last_page):
 #     b.append(a)
 
 
-item_code = '015760'
-last_page = 1
+item_code = str(input('원하시는 종목의 코드를 입력하세요: '))
+last_page = int(input('스크래핑할 페이지 수를 입력하세요: '))
+
 st.text(f'입력하신 종목의 코드는 {item_code}입니다.')
 st.text(f'{last_page}개의 페이지를 출력합니다.')
 st.dataframe(종목별_긍정점수(item_code, last_page))
