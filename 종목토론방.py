@@ -82,6 +82,7 @@ def 종목토론_목록_내용링크_내용(item_code, last_page):
 
 # 토큰화
 from transformers import PreTrainedTokenizerFast
+
 tokenizer = PreTrainedTokenizerFast.from_pretrained(
     "skt/kogpt2-base-v2",
     bos_token='</s>', 
@@ -161,6 +162,6 @@ last_page = st.number_input('스크래핑할 페이지 수를 입력하세요: '
 
 st.write(f'입력하신 종목의 코드는 {item_code}입니다.')
 st.write(f'{last_page}개의 페이지를 출력합니다.')
-st.dataframe(종목별_긍정점수(item_code, last_page))
+st.write(종목별_긍정점수(item_code, last_page))
 
 
