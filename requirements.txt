@@ -7,7 +7,6 @@ seaborn
 matplotlib
 koreanize-matplotlib
 beautifulsoup4
-time
 regex
 transformers
 scikit-learn
