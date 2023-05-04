@@ -8,8 +8,6 @@ import re
 
 import FinanceDataReader as fdr
 
-st.balloons()
-
 st.set_page_config(
     page_title="네이버 증권 종목토론실 감성 분석",
     page_icon="💰",
