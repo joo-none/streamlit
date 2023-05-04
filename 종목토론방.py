@@ -28,8 +28,7 @@ def jongmok_toron(item_code, last_page):
     for page_no in range(1, last_page + 1):
 
         df = get_one_page(item_code, page_no)
-        post_list.append(df)  
-        time.sleep(0.001)
+        post_list.append(df) 
 
     post_list = pd.concat(post_list, ignore_index=True)
     return post_list
