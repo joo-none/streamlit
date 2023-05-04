@@ -152,7 +152,7 @@ def 종목별_긍정점수(item_code, last_page):
     return data['긍정점수'].mean()
 
 
-item_code = st.text_input('분석을 원하시는 종목의 코드를 입력하세요')
+item_code = st.text_input('분석을 원하시는 종목의 코드를 입력하세요.')
 last_page = 1
 # last_page = st.number_input('스크래핑할 페이지 수를 입력하세요. (페이지 수가 많을수록 정확도는 향상되지만 오랜 시간이 소요됩니다)', min_value=0, step=1, format='%d')
 
@@ -167,7 +167,7 @@ else:
     score_color = "white"
 
 
-st.write(f' 입력하신 종목의 코드는 **{item_code}**입니다. )
+st.write(f' 입력하신 종목의 코드는 **{item_code}**입니다.' )
 # **{last_page}**개의 페이지를 출력합니다.'
 
 st.write(f" 네이버 종목토론실에서 해당 종목의 실시간 긍정 점수는 <h1><span style='color:{score_color};'>**{score}**</span></h1> 입니다.", unsafe_allow_html=True)
