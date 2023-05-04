@@ -93,6 +93,8 @@ tokenizer = PreTrainedTokenizerFast.from_pretrained(
 # 감성분석
 from transformers import pipeline
 
+classifier = pipeline("sentiment-analysis")
+
 def 종목토론_제목_내용링크_내용_감성분석(item_code, last_page):
     df = 종목토론_목록_내용링크_내용(item_code, last_page)
     classifier = pipeline("sentiment-analysis")
