@@ -10,3 +10,4 @@ beautifulsoup4
 regex
 transformers
 scikit-learn
+tensorflow
