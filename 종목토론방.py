@@ -63,84 +63,84 @@ def 목록_내용링크(item_code, last_page):
     return a
 # @@@@@@@
 
-# # 내용을 수집하는 함수
-# def 종목토론_내용(item_code, last_page):
-#     content = []
-#     df = 목록_내용링크(item_code, last_page)
-#     for i in df['내용링크']:
-#         headers = {"user-agent": "Mozilla/5.0"}
-#         response = requests.get(i, headers=headers)
-#         html = BeautifulSoup(response.text)
-#         a = html.select('#body')[0].text
-#         content.append(a)        
-#     return content
+# 내용을 수집하는 함수
+def 종목토론_내용(item_code, last_page):
+    content = []
+    df = 목록_내용링크(item_code, last_page)
+    for i in df['내용링크']:
+        headers = {"user-agent": "Mozilla/5.0"}
+        response = requests.get(i, headers=headers)
+        html = BeautifulSoup(response.text)
+        a = html.select('#body')[0].text
+        content.append(a)        
+    return content
 
-# def 종목토론_목록_내용링크_내용(item_code, last_page):
-#     df = 목록_내용링크(item_code, last_page)
-#     df['내용'] = 종목토론_내용(item_code, last_page)
-#     return df
+def 종목토론_목록_내용링크_내용(item_code, last_page):
+    df = 목록_내용링크(item_code, last_page)
+    df['내용'] = 종목토론_내용(item_code, last_page)
+    return df
 
-# # 토큰화
-# from transformers import PreTrainedTokenizerFast
-# tokenizer = PreTrainedTokenizerFast.from_pretrained(
-#     "skt/kogpt2-base-v2",
-#     bos_token='</s>', 
-#     eos_token='</s>', 
-#     unk_token='<unk>',
-#     pad_token='<pad>', 
-#     mask_token='<mask>')
+# 토큰화
+from transformers import PreTrainedTokenizerFast
+tokenizer = PreTrainedTokenizerFast.from_pretrained(
+    "skt/kogpt2-base-v2",
+    bos_token='</s>', 
+    eos_token='</s>', 
+    unk_token='<unk>',
+    pad_token='<pad>', 
+    mask_token='<mask>')
     
-# # 감성분석
-# from transformers import pipeline
+# 감성분석
+from transformers import pipeline
 
-# def 종목토론_제목_내용링크_내용_감성분석(item_code, last_page):
-#     df = 종목토론_목록_내용링크_내용(item_code, last_page)
-#     classifier = pipeline("sentiment-analysis")
-#     제목내용 = [df['제목'][i] + ' ' + df['내용'][i] for i in range(len(df))]
+def 종목토론_제목_내용링크_내용_감성분석(item_code, last_page):
+    df = 종목토론_목록_내용링크_내용(item_code, last_page)
+    classifier = pipeline("sentiment-analysis")
+    제목내용 = [df['제목'][i] + ' ' + df['내용'][i] for i in range(len(df))]
 
-#     # 정규표현식 적용
-#     제목내용_특수문자제거 = []
-#     for i in 제목내용:
-#         w = re.sub(r"[^가-힣\s\d]", "", i)
-#         제목내용_특수문자제거.append(w)
+    # 정규표현식 적용
+    제목내용_특수문자제거 = []
+    for i in 제목내용:
+        w = re.sub(r"[^가-힣\s\d]", "", i)
+        제목내용_특수문자제거.append(w)
 
-#     # 토큰화
-#     제목내용_특수문자제거_토큰화 = []
-#     for i in 제목내용_특수문자제거:
-#         a = tokenizer.tokenize(i)
-#         제목내용_특수문자제거_토큰화.append(a)
+    # 토큰화
+    제목내용_특수문자제거_토큰화 = []
+    for i in 제목내용_특수문자제거:
+        a = tokenizer.tokenize(i)
+        제목내용_특수문자제거_토큰화.append(a)
 
-#     # 감성분석
-#     sentiment = []
-#     for i in 제목내용_특수문자제거_토큰화:
-#         a = classifier(i)
-#         sentiment.append(a)
+    # 감성분석
+    sentiment = []
+    for i in 제목내용_특수문자제거_토큰화:
+        a = classifier(i)
+        sentiment.append(a)
 
-#     # 데이터프레임으로 만들기
-#     b = []
-#     for i in range(len(sentiment)):
-#         a = pd.DataFrame(sentiment[i], columns=['label', 'score'])
-#         b.append(a)
-#         sentiment_analysis = pd.concat(b, ignore_index=True)
+    # 데이터프레임으로 만들기
+    b = []
+    for i in range(len(sentiment)):
+        a = pd.DataFrame(sentiment[i], columns=['label', 'score'])
+        b.append(a)
+        sentiment_analysis = pd.concat(b, ignore_index=True)
 
-#     df['sentiment-analysis'] = sentiment_analysis['label']
-#     df['score'] = sentiment_analysis['score']
+    df['sentiment-analysis'] = sentiment_analysis['label']
+    df['score'] = sentiment_analysis['score']
 
-#     return df
+    return df
 
-# def 종목별_긍정점수(item_code, last_page):
-#     data = 종목토론_제목_내용링크_내용_감성분석(item_code, last_page)
+def 종목별_긍정점수(item_code, last_page):
+    data = 종목토론_제목_내용링크_내용_감성분석(item_code, last_page)
 
-#     긍정점수 = []
-#     for i in range(len(data[['sentiment-analysis', 'score']])):
-#         if data['sentiment-analysis'][i] == 'POSITIVE':
-#             a = data['score'][i]
-#             긍정점수.append(a)
-#         else:
-#             a = 1 - data['score'][i]
-#             긍정점수.append(a)
-#     data['긍정점수'] = 긍정점수
-#     return data['긍정점수'].mean()
+    긍정점수 = []
+    for i in range(len(data[['sentiment-analysis', 'score']])):
+        if data['sentiment-analysis'][i] == 'POSITIVE':
+            a = data['score'][i]
+            긍정점수.append(a)
+        else:
+            a = 1 - data['score'][i]
+            긍정점수.append(a)
+    data['긍정점수'] = 긍정점수
+    return data['긍정점수'].mean()
 
 # # 여러 종목
 
@@ -156,6 +156,8 @@ def 목록_내용링크(item_code, last_page):
 
 item_code = '015760'
 last_page = 1
-st.dataframe(목록_내용링크(item_code, last_page))
+st.text(f'입력하신 종목의 코드는 {item_code}입니다.')
+st.text(f'{last_page}개의 페이지를 출력합니다.')
+st.dataframe(종목별_긍정점수(item_code, last_page))
 
 
