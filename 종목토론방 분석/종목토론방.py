@@ -8,7 +8,7 @@ import re
 
 import FinanceDataReader as fdr
 
-st.title('종목 토론방 분석')
+st.title('실시간 네이버 종목토론실 투자 심리 분석')
 
 # 한페이지를 수집하는 함수
 def get_one_page(item_code, page_no):
