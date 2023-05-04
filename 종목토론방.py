@@ -145,19 +145,8 @@ def 종목별_긍정점수(item_code, last_page):
     data['긍정점수'] = 긍정점수
     return data['긍정점수'].mean()
 
-# # 여러 종목
 
-
-# kospi = fdr.StockListing('KOSPI')
-# kospi.head(30)
-
-# for i in kospi.head(3)['Code']:
-#     last_page=1
-#     a = 종목별_긍정점수(i, last_page)
-#     b.append(a)
-
-
-item_code = st.text_input('원하시는 종목의 코드를 입력하세요')
+item_code = st.text_input('분석을 원하시는 종목의 코드를 입력하세요')
 last_page = st.number_input('스크래핑할 페이지 수를 입력하세요. (페이지 수가 많을수록 정확도는 향상되지만 속도가 느려집니다.)', min_value=0, step=1, format='%d')
 score = round(float(종목별_긍정점수(item_code, last_page)), 3)
 
