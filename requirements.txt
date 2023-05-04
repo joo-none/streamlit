@@ -8,3 +8,6 @@ matplotlib
 koreanize-matplotlib
 beautifulsoup4
 time
+re
+PreTrainedTokenizerFast
+pipeline
