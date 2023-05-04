@@ -166,7 +166,7 @@ else:
 
 
 st.write(f' 입력하신 종목의 코드는 **{item_code}**입니다. **{last_page}**개의 페이지를 출력합니다.')
-st.write(f" 네이버 종목토론실에서 해당 종목의 실시간 긍정 점수는 <big><span style='color:{score_color};'>**{score}**</span></big> 입니다.", unsafe_allow_html=True)
+st.write(f" 네이버 종목토론실에서 해당 종목의 실시간 긍정 점수는 <h1><span style='color:{score_color};'>**{score}**</span></h1> 입니다.", unsafe_allow_html=True)
 
 
 st.write(' 저희 서비스를 이용해주셔서 감사합니다.')
