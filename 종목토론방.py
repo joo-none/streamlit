@@ -152,7 +152,8 @@ score = round(float(종목별_긍정점수(item_code, last_page)), 3)
 
 st.write(f'입력하신 종목의 코드는 **{item_code}**입니다.')
 st.write(f'**{last_page}**개의 페이지를 출력합니다.')
-st.write(f"네이버 종목 토론방에서 해당 종목의 실시간 긍정 점수는 **<span style=\'color:red;\'>{score}</span>**입니다.")
-st.write('*투자의 책임은 항상 본인에게 있습니다.* 저희 서비스를 이용해주셔서 감사합니다.')
+st.write(f"네이버 종목 토론방에서 해당 종목의 실시간 긍정 점수는 **<span style='color:red;'>{score}</span>**입니다.", unsafe_allow_html=True)
+st.write('저희 서비스를 이용해주셔서 감사합니다.')
+st.write('*투자의 책임은 항상 본인에게 있습니다.*')
 
 
