@@ -54,13 +54,13 @@ def context_link(item_code, last_page):
         context_list = pd.concat([pd.DataFrame(x) for x in b], ignore_index=True)
     return context_list
 
-# # 종목토론 목록과 내용링크를 포함한 데이터프레임 만들기
-# def 목록_내용링크(item_code, last_page):
-#     종목토론_목록 = jongmok_toron(item_code, last_page)
-#     종목토론_내용링크 = context_link(item_code, last_page)
-#     a = pd.concat([종목토론_목록, 종목토론_내용링크], axis=1, ignore_index=True)
-#     a.columns = ['날짜', '제목', '글쓴이', '조회', '공감', '비공감', '내용링크']
-#     return a
+# 종목토론 목록과 내용링크를 포함한 데이터프레임 만들기
+def 목록_내용링크(item_code, last_page):
+    종목토론_목록 = jongmok_toron(item_code, last_page)
+    종목토론_내용링크 = context_link(item_code, last_page)
+    a = pd.concat([종목토론_목록, 종목토론_내용링크], axis=1, ignore_index=True)
+    a.columns = ['날짜', '제목', '글쓴이', '조회', '공감', '비공감', '내용링크']
+    return a
 
 # # 내용을 수집하는 함수
 # def 종목토론_내용(item_code, last_page):
