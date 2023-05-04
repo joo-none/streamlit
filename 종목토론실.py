@@ -167,8 +167,8 @@ else:
     score_color = "white"
 
 # 종목명 출력
-krx = fdr.Stocklisting('KRX')
-name = krx[krx['Symbol'] == item_code]['Name']
+krx = fdr.StockListing('KRX')
+name = krx[krx['Code'] == item_code]['Name']
 
     
     
