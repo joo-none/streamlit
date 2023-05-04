@@ -150,9 +150,19 @@ item_code = st.text_input('분석을 원하시는 종목의 코드를 입력하�
 last_page = st.number_input('스크래핑할 페이지 수를 입력하세요. (페이지 수가 많을수록 정확도는 향상되지만 속도가 느려집니다.)', min_value=0, step=1, format='%d')
 score = round(float(종목별_긍정점수(item_code, last_page)), 3)
 
-st.write(f'입력하신 종목의 코드는 **{item_code}**입니다.')
-st.write(f'**{last_page}**개의 페이지를 출력합니다.')
-st.write(f"네이버 종목 토론방에서 해당 종목의 실시간 긍정 점수는 **<span style='color:red;'>{score}</span>**입니다.", unsafe_allow_html=True)
+# score 
+if score >= 0.67:
+    score_color = "red"
+elif score < 0.33:
+    score_color = "blue"
+else:
+    score_color = "black"
+
+
+
+st.write(f'입력하신 종목의 코드는 <code style="color:black; background-color:yellow">{item_code}</code>입니다.', unsafe_allow_html=True)
+st.write(f'<code style="color: black; background-color: yellow">{last_page}</code>개의 페이지를 출력합니다.', unsafe_allow_html=True)
+st.write(f"네이버 종목 토론방에서 해당 종목의 실시간 긍정 점수는 <span style='color:{score_color};'>{score}</span>입니다.", unsafe_allow_html=True)
 st.write('저희 서비스를 이용해주셔서 감사합니다.')
 st.write('*투자의 책임은 항상 본인에게 있습니다.*')
 
