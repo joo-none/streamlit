@@ -157,13 +157,13 @@ def 종목별_긍정점수(item_code, last_page):
 #     b.append(a)
 
 
-item_code = st.text_input('원하시는 종목의 코드를 입력하세요: ')
-last_page = st.number_input('스크래핑할 페이지 수를 입력하세요: ', min_value=0, step=1, format='%d')
-score = round(float(종목별_긍정점수(item_code, last_page)), 2)
+item_code = st.text_input('원하시는 종목의 코드를 입력하세요')
+last_page = st.number_input('스크래핑할 페이지 수를 입력하세요', min_value=0, step=1, format='%d')
+score = round(float(종목별_긍정점수(item_code, last_page)), 3)
 
-st.write(f'입력하신 종목의 코드는 {item_code}입니다.')
-st.write(f'{last_page}개의 페이지를 출력합니다.')
-st.write(f'네이버 종목 토론방에서 해당 종목의 실시간 긍정 점수는 {score}입니다.')
+st.write(f'입력하신 종목의 코드는 **{item_code}**입니다.')
+st.write(f'**{last_page}**개의 페이지를 출력합니다.')
+st.write(f'네이버 종목 토론방에서 해당 종목의 실시간 긍정 점수는 **<span style='color:red;'>{score}</span>**입니다.')
 st.write('저희 서비스를 이용해주셔서 감사합니다.')
 
 
